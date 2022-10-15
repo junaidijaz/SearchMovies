@@ -14,8 +14,8 @@ object AndroidSdk {
 }
 
 object Releases {
-    const val stagingUrl = "\"https://api.themoviedb.org/3/search/multi\""
-    const val releaseUrl = "\"https://api.themoviedb.org/3/search/multi\""
+    const val stagingUrl = "\"https://api.themoviedb.org/3/\""
+    const val releaseUrl = "\"https://api.themoviedb.org/3/\""
 }
 
 object AndroidClient {
@@ -149,6 +149,7 @@ object TestLibraries {
 
 object SubModule {
     const val dataMoviesRepository = ":data:data-movies-repository"
+    const val dataMoviesRemote = ":data:data-movies-remote"
     const val networking = ":networking"
 }
 

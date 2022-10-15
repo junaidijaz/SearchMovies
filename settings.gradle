@@ -12,8 +12,10 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "StartzPlay"
+rootProject.name = "StarzPlay"
 include ':app'
 include ':data:data-movies-repository'
 include(":networking")
 
+
+include ':data:data-movies-remote'
