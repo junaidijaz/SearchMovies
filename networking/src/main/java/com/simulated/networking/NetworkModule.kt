@@ -8,7 +8,6 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
-import okhttp3.Request
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -25,7 +24,7 @@ class NetworkModule {
         .readTimeout(60, TimeUnit.SECONDS)
         .connectTimeout(60, TimeUnit.SECONDS)
         .addInterceptor(loggingInterceptor())
-        .addInterceptor(getVersionCodeHeader())
+        .addInterceptor(apiKeyInterceptor())
         .build()
 
     @Provides
@@ -38,10 +37,18 @@ class NetworkModule {
         .addConverterFactory(MoshiConverterFactory.create(moshi))
         .build()
 
-    private fun getVersionCodeHeader(): Interceptor {
+    private fun apiKeyInterceptor(): Interceptor {
         return Interceptor { chain ->
-            val request: Request = chain.request().newBuilder()
-                .addHeader("version", BuildConfig.VERSION_NAME.toString()).build()
+            val original = chain.request()
+            val originalHttpUrl = original.url
+
+            val url = originalHttpUrl.newBuilder()
+                .addQueryParameter("api_key", BuildConfig.MOVIE_API_KEY)
+                .build()
+
+            val requestBuilder = original.newBuilder()
+                .url(url)
+            val request = requestBuilder.build()
             chain.proceed(request)
         }
     }

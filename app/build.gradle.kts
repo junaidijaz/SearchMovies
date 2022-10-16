@@ -55,5 +55,10 @@ dependencies {
     implementation(Libraries.activityKtx)
     kapt(Libraries.lifecycleCompiler)
 
+    implementation(project(path = SubModule.presentationHome))
+    implementation(project(path = SubModule.dataMoviesRemote))
+    implementation(project(path = SubModule.dataMoviesRepository))
+
+
 
 }

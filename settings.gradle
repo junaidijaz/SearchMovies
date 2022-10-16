@@ -19,3 +19,6 @@ include(":networking")
 
 
 include ':data:data-movies-remote'
+include ':data:data-common'
+include(":presentation:presentation-common")
+include ':presentation:presentation-home'

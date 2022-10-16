@@ -6,7 +6,7 @@ data class SearchMovieApiResponse(
     @Json(name = "page")
     var page: Int,
     @Json(name = "results")
-    var results: ArrayList<Videos>,
+    var results: List<Videos>,
     @Json(name = "total_pages")
     var totalPages: Int,
     @Json(name = "total_results")
@@ -15,43 +15,42 @@ data class SearchMovieApiResponse(
 
 data class Videos(
     @Json(name = "adult")
-    var adult: Boolean,
-
+    var adult: Boolean?,
     @Json(name = "backdrop_path")
-    var backdropPath: String,
+    var backdropPath: String?,
     @Json(name = "genre_ids")
-    var genreIds: ArrayList<Int>,
+    var genreIds: List<Int>?,
     @Json(name = "id")
-    var id: Int,
+    var id: Int?,
     @Json(name = "media_type")
     var mediaType: String,
     @Json(name = "original_language")
-    var originalLanguage: String,
+    var originalLanguage: String?,
     @Json(name = "original_title")
-    var originalTitle: String,
+    var originalTitle: String?,
     @Json(name = "overview")
-    var overview: String,
+    var overview: String?,
     @Json(name = "popularity")
-    var popularity: Float,
+    var popularity: Float?,
     @Json(name = "poster_path")
-    var posterPath: String,
+    var posterPath: String?,
     @Json(name = "release_date")
-    var releaseDate: String,
+    var releaseDate: String?,
     @Json(name = "title")
-    var title: String,
+    var title: String?,
     @Json(name = "video")
-    var video: Boolean,
+    var video: Boolean?,
     @Json(name = "vote_average")
-    var voteAverage: Float,
+    var voteAverage: Float?,
     @Json(name = "vote_count")
-    var voteCount: Int,
+    var voteCount: Int?,
     @Json(name = "first_air_date")
-    var firstAirDate: String,
+    var firstAirDate: String?,
     @Json(name = "name")
-    var name: String,
+    var name: String?,
     @Json(name = "origin_country")
-    var originCountry: ArrayList<String>,
+    var originCountry: List<String>?,
     @Json(name = "original_name")
-    var originalName: String
+    var originalName: String?
 )
 

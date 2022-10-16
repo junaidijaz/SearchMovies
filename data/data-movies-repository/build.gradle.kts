@@ -47,5 +47,6 @@ dependencies {
     testImplementation(TestLibraries.junit4)
     testImplementation(TestLibraries.testExtJunit)
 
+    implementation(project(path = SubModule.dataCommon))
 
 }

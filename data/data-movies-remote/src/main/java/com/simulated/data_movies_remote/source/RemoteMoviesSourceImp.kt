@@ -1,5 +1,7 @@
 package com.simulated.data_movies_remote.source
 
+import android.util.Log
+import com.simulated.data_common.entity.AppException
 import com.simulated.data_movies_remote.networking.SearchMovieApiResponse
 import com.simulated.data_movies_remote.networking.SearchMovieService
 import com.simulated.data_movies_remote.networking.Videos
@@ -12,16 +14,18 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
-class RemoteMoviesSourceImp @Inject constructor(var serMoviesService: SearchMovieService) :
+class RemoteMoviesSourceImp @Inject constructor(var searchMoviesService: SearchMovieService) :
     RemoteMoviesSource {
+
+    val TAG = RemoteMoviesSourceImp::class.java.simpleName
 
 
     override fun searchMovies(page: Int, query: String): Flow<SearchedVideos> = flow {
-        emit(serMoviesService.searchMovies(page, query))
+        emit(searchMoviesService.searchMovies(page, query))
     }.map {
         convert(it)
     }.catch {
-        //todo catch exception
+       throw AppException.MoviesException(it)
     }
 
     private fun convert(item: SearchMovieApiResponse): SearchedVideos {
@@ -33,7 +37,7 @@ class RemoteMoviesSourceImp @Inject constructor(var serMoviesService: SearchMovi
         )
     }
 
-    private fun convertVideoList(list: ArrayList<Videos>): List<Video> {
+    private fun convertVideoList(list: List<Videos>): List<Video> {
         return list.map {
             Video(
                 it.adult,
@@ -49,7 +53,8 @@ class RemoteMoviesSourceImp @Inject constructor(var serMoviesService: SearchMovi
                 it.video,
                 it.voteAverage,
                 it.voteCount,
-                it.firstAirDate, it.name,
+                it.firstAirDate,
+                it.name,
                 it.originCountry,
                 it.originalName
             )

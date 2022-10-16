@@ -45,5 +45,7 @@ dependencies {
 
     implementation(project(path = SubModule.networking))
     implementation(project(path = SubModule.dataMoviesRepository))
+    implementation(project(path = SubModule.dataCommon))
+
 
 }

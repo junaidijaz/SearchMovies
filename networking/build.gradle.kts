@@ -20,6 +20,7 @@ android {
         release {
             isMinifyEnabled = false
             buildConfigField("String", "BASE_URL", Releases.releaseUrl)
+            buildConfigField("String", "MOVIE_API_KEY", Releases.movieApiKey)
             buildConfigField("double", "VERSION_NAME", AndroidClient.versionName)
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -29,6 +30,7 @@ android {
 
         debug {
             buildConfigField("String", "BASE_URL", Releases.stagingUrl)
+            buildConfigField("String", "MOVIE_API_KEY", Releases.movieApiKey)
             buildConfigField("double", "VERSION_NAME", AndroidClient.versionName)
         }
 
