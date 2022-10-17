@@ -2,32 +2,14 @@ package com.simulated.presentation_home
 
 import com.simulated.data_movies_repository.models.SearchedVideos
 import com.simulated.presentation_common.state.CommonResultConverter
+import com.simulated.presentation_home.models.SearchedMoviesUi
 import javax.inject.Inject
 
 class MovieConverter @Inject constructor() :
-    CommonResultConverter<SearchedVideos, List<VideoModel>>() {
+    CommonResultConverter<SearchedVideos, List<SearchedMoviesUi>>() {
 
-    override fun convertSuccess(data: SearchedVideos): List<VideoModel> {
-        return data.results.map {
-            VideoModel(
-                it.adult,
-                it.id,
-                it.mediaType,
-                it.originalLanguage,
-                it.originalTitle,
-                it.overview,
-                it.popularity,
-                it.posterPath,
-                it.releaseDate,
-                it.title,
-                it.video,
-                it.voteAverage,
-                it.voteCount,
-                it.firstAirDate,
-                it.name,
-                it.originCountry,
-                it.originalName
-            )
-        }
+    override fun convertSuccess(data: SearchedVideos): List<SearchedMoviesUi> {
+        return data.results.groupBy { it.mediaType }
+            .map { movie -> SearchedMoviesUi(movie.key, movie.value) }
     }
 }

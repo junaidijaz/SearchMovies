@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    app:cardCornerRadius="@dimen/_4sdp"
+    app:cardElevation="@dimen/_4sdp"
+    app:cardUseCompatPadding="true">
+
+    <ImageView
+        android:id="@+id/ivMovie"
+        android:scaleType="centerCrop"
+        android:layout_width="@dimen/_100sdp"
+        android:layout_height="@dimen/_140sdp"
+        tools:ignore="ContentDescription" />
+
+</androidx.cardview.widget.CardView>

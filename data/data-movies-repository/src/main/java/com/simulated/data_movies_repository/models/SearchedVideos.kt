@@ -1,5 +1,7 @@
 package com.simulated.data_movies_repository.models
 
+import com.simulated.data_movies_repository.Constants
+
 data class SearchedVideos(
     var page: Int,
     var results: List<Video>,
@@ -17,6 +19,7 @@ data class Video(
     var popularity: Float?,
     var posterPath: String?,
     var releaseDate: String?,
+    var profilePath: String?,
     var title: String?,
     var video: Boolean?,
     var voteAverage: Float?,
@@ -25,5 +28,8 @@ data class Video(
     var name: String?,
     var originCountry: List<String>?,
     var originalName: String?,
-)
+) {
+
+    val videoThumbnail get() = if (mediaType == "person") Constants.imageBaseUrl + profilePath else Constants.imageBaseUrl + posterPath
+}
 

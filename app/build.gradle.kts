@@ -47,6 +47,8 @@ dependencies {
     androidTestImplementation(TestLibraries.testExtJunit)
     androidTestImplementation(TestLibraries.espressoCore)
 
+
+
     implementation(Libraries.hilt)
     kapt(Libraries.hiltAndroidCompilerKtx)
 
@@ -55,10 +57,13 @@ dependencies {
     implementation(Libraries.activityKtx)
     kapt(Libraries.lifecycleCompiler)
 
+    implementation(Libraries.ssp)
+    implementation(Libraries.sdp)
+
+    implementation(project(path = SubModule.presentationCommon))
     implementation(project(path = SubModule.presentationHome))
     implementation(project(path = SubModule.dataMoviesRemote))
     implementation(project(path = SubModule.dataMoviesRepository))
-
 
 
 }

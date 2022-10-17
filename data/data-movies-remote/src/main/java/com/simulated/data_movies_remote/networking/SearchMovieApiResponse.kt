@@ -34,6 +34,8 @@ data class Videos(
     var popularity: Float?,
     @Json(name = "poster_path")
     var posterPath: String?,
+    @Json(name = "profile_path")
+    var profilePath: String?,
     @Json(name = "release_date")
     var releaseDate: String?,
     @Json(name = "title")

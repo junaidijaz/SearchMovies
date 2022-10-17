@@ -65,7 +65,7 @@ object Libraries {
         const val annotations = "1.1.0"
         const val ktx = "1.7.0"
         const val lifeCycleKtx = "1.5.0"
-        const val glide = "4.11.0"
+        const val glide = "4.14.2"
         const val retrofit = "2.9.0"
         const val okHttpLoggingInterceptor = "4.10.0"
         const val roomVersion = "2.4.3"
@@ -73,8 +73,14 @@ object Libraries {
         const val viewPumpVersion = "2.0.3"
         const val moshi = "1.13.0"
         const val okHttp = "4.9.0"
+        const val navVersion = "2.5.2"
+        const val spDimen = "1.1.0"
 
     }
+
+    const val navigationFragment =
+        "androidx.navigation:navigation-fragment-ktx:${Versions.navVersion}"
+    const val navigationUi = "androidx.navigation:navigation-ui-ktx:${Versions.navVersion}"
 
     const val kotlinStdLib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Kotlin.standardLibrary}"
     const val activityKtx = "androidx.activity:activity-ktx:${Versions.lifeCycleKtx}"
@@ -96,6 +102,7 @@ object Libraries {
     const val material = "com.google.android.material:material:${Versions.material}"
     const val androidAnnotations = "androidx.annotation:annotation:${Versions.annotations}"
     const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
+    const val glideAnnotationProcessor = "com.github.bumptech.glide:compiler:${Versions.glide}"
     const val hilt = "com.google.dagger:hilt-android:${Versions.hilt}"
     const val hiltCompilerKtx = "com.google.dagger:hilt-compiler:${Versions.hilt}"
     const val hiltAndroidCompilerKtx = "com.google.dagger:hilt-android-compiler:${Versions.hilt}"
@@ -117,6 +124,11 @@ object Libraries {
         "com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava"
     const val gson =
         "com.google.code.gson:gson:${Versions.gson}"
+
+    const val sdp = "com.intuit.ssp:ssp-android:${Versions.spDimen}"
+    const val ssp = "com.intuit.sdp:sdp-android:${Versions.spDimen}"
+
+
 }
 
 object TestLibraries {

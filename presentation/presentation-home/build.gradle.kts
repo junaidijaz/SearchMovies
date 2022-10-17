@@ -2,6 +2,7 @@ plugins {
     id(BuildPlugins.androidLibrary)
     id(BuildPlugins.kotlinAndroid)
     id(BuildPlugins.kotlinKapt)
+    id(BuildPlugins.androidHilt)
 }
 
 android {
@@ -30,6 +31,10 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -39,6 +44,10 @@ dependencies {
     implementation(Libraries.appCompat)
     implementation(Libraries.material)
     implementation(Libraries.constraintLayout)
+
+    api(Libraries.navigationFragment)
+    api(Libraries.navigationUi)
+
     testImplementation(TestLibraries.junit4)
     androidTestImplementation(TestLibraries.testExtJunit)
     androidTestImplementation(TestLibraries.espressoCore)
@@ -50,6 +59,13 @@ dependencies {
     implementation(Libraries.lifeCycleRuntime)
     implementation(Libraries.activityKtx)
     kapt(Libraries.lifecycleCompiler)
+
+    implementation(Libraries.ssp)
+    implementation(Libraries.sdp)
+
+    implementation(Libraries.glide)
+
+
 
     implementation(project(path= SubModule.dataMoviesRepository))
     implementation(project(path= SubModule.dataCommon))

@@ -48,6 +48,7 @@ class RemoteMoviesSourceImp @Inject constructor(var searchMoviesService: SearchM
                 it.overview,
                 it.popularity,
                 it.posterPath,
+                it.profilePath,
                 it.releaseDate,
                 it.title,
                 it.video,
