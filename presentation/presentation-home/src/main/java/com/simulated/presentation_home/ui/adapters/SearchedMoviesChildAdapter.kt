@@ -1,25 +1,36 @@
 package com.simulated.presentation_home.ui.adapters
 
+import android.content.Context
+import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.simulated.data_movies_repository.models.Video
+import com.simulated.presentation_home.Constants
+import com.simulated.presentation_home.R
 import com.simulated.presentation_home.databinding.ListItemMediaBinding
 import com.simulated.presentation_home.databinding.ListItemMovieBinding
-import com.simulated.presentation_home.databinding.ListItemSearchedMovieParentBinding
 import com.simulated.presentation_home.databinding.ListItemTvBinding
-import com.simulated.presentation_home.models.SearchedMoviesUi
+import com.simulated.presentation_home.models.VideoUi
 
 
-class SearchedMoviesChildAdapter :
-    ListAdapter<Video, SearchedMoviesChildAdapter.MyViewHolder>(
+class SearchedMoviesChildAdapter(context: Context, var mListener: ((VideoUi) -> Unit)?) :
+    ListAdapter<VideoUi, SearchedMoviesChildAdapter.MyViewHolder>(
         DIFF_CALLBACK
     ) {
+
+
+    private var thumb: Drawable?
+
+    init {
+        thumb = ResourcesCompat.getDrawable(context.resources, R.drawable.place_holder_video, null)
+
+    }
+
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -55,18 +66,15 @@ class SearchedMoviesChildAdapter :
                     )
                 )
             }
-
-
         }
     }
 
-
     override fun getItemViewType(position: Int): Int {
         return when (getItem(position).mediaType) {
-            "video" -> {
+            Constants.MediaTypes.MOVIE.value -> {
                 MediaTypes.MOVIE.value
             }
-            "tv" -> {
+            Constants.MediaTypes.TV.value -> {
                 MediaTypes.TV.value
             }
             else -> {
@@ -77,8 +85,14 @@ class SearchedMoviesChildAdapter :
 
     inner class MovieViewHolder(private var binding: ListItemMovieBinding) :
         MyViewHolder(binding.root) {
-        override fun bind(video: Video) {
-            Glide.with(binding.root.context).load(video.videoThumbnail).into(binding.ivMovie)
+        override fun bind(video: VideoUi) {
+
+            Glide.with(binding.root.context).load(video.videoThumbnail)
+                .placeholder(thumb).into(binding.ivMovie)
+
+            binding.root.setOnClickListener {
+                mListener?.invoke(video)
+            }
         }
     }
 
@@ -86,9 +100,15 @@ class SearchedMoviesChildAdapter :
         MyViewHolder(binding.root) {
 
         override fun bind(
-            video: Video
+            video: VideoUi
         ) {
-            Glide.with(binding.root.context).load(video.videoThumbnail).into(binding.ivMovie)
+
+            Glide.with(binding.root.context).load(video.videoThumbnail)
+                .placeholder(thumb).into(binding.ivMovie)
+
+            binding.root.setOnClickListener {
+                mListener?.invoke(video)
+            }
         }
 
 
@@ -98,11 +118,19 @@ class SearchedMoviesChildAdapter :
         MyViewHolder(binding.root) {
 
         override fun bind(
-            video: Video
+            video: VideoUi
         ) {
-            Glide.with(binding.root.context).load(video.videoThumbnail).into(binding.ivMovie)
-        }
 
+            Glide.with(binding.root.context).load(video.videoThumbnail)
+                .placeholder(thumb)
+                .into(binding.ivMovie)
+
+            binding.tvPersonName.text = video.name
+
+            binding.root.setOnClickListener {
+                mListener?.invoke(video)
+            }
+        }
 
     }
 
@@ -112,43 +140,31 @@ class SearchedMoviesChildAdapter :
     }
 
 
-    inner class ViewHolder(private var binding: ListItemSearchedMovieParentBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-
-        fun bind(
-            item: SearchedMoviesUi
-        ) {
-            binding.tvMovieType.text = item.movieType
-
-        }
-
-    }
-
-
     private enum class MediaTypes(val value: Int) {
         TV(1), MOVIE(2), OTHER(3)
     }
 
 
     abstract class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        abstract fun bind(video: Video)
+        abstract fun bind(video: VideoUi)
     }
 
     companion object {
         private val DIFF_CALLBACK =
-            object : DiffUtil.ItemCallback<Video>() {
+            object : DiffUtil.ItemCallback<VideoUi>() {
                 override fun areItemsTheSame(
-                    oldItem: Video,
-                    newItem: Video
+                    oldItem: VideoUi,
+                    newItem: VideoUi
                 ): Boolean =
                     oldItem.id == newItem.id
 
                 override fun areContentsTheSame(
-                    oldItem: Video,
-                    newItem: Video
+                    oldItem: VideoUi,
+                    newItem: VideoUi
                 ): Boolean =
                     oldItem == newItem
             }
     }
+
 }
 

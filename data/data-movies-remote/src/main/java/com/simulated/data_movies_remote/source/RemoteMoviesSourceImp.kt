@@ -38,7 +38,9 @@ class RemoteMoviesSourceImp @Inject constructor(var searchMoviesService: SearchM
     }
 
     private fun convertVideoList(list: List<Videos>): List<Video> {
+
         return list.map {
+            Log.d(TAG, "convertVideoList: ${it.profilePath}")
             Video(
                 it.adult,
                 it.id,
@@ -48,8 +50,8 @@ class RemoteMoviesSourceImp @Inject constructor(var searchMoviesService: SearchM
                 it.overview,
                 it.popularity,
                 it.posterPath,
-                it.profilePath,
                 it.releaseDate,
+                it.profilePath,
                 it.title,
                 it.video,
                 it.voteAverage,

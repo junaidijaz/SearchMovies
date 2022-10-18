@@ -3,6 +3,8 @@ plugins {
     id(BuildPlugins.kotlinAndroid)
     id(BuildPlugins.kotlinKapt)
     id(BuildPlugins.androidHilt)
+    id(BuildPlugins.kotlinParcelize)
+    id(BuildPlugins.pluginSafeArgs)
 }
 
 android {
@@ -64,6 +66,7 @@ dependencies {
     implementation(Libraries.sdp)
 
     implementation(Libraries.glide)
+    implementation(Libraries.swipeRefresh)
 
 
 

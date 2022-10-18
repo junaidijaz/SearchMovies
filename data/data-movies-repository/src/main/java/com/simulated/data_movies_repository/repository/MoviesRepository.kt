@@ -1,4 +1,5 @@
 package com.simulated.data_movies_repository.repository
+
 import android.util.Log
 import com.simulated.data_common.entity.AppException
 import com.simulated.data_common.entity.Result

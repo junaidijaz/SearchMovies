@@ -34,6 +34,7 @@ object BuildPlugins {
         const val gradleVersion = "6.8"
         const val hilt = "2.44"
         const val gmsVersion = "4.3.10"
+        const val navVersion = "2.5.2"
     }
 
     const val androidGradlePlugin = "com.android.tools.build:gradle:${Versions.buildToolsVersion}"
@@ -50,10 +51,14 @@ object BuildPlugins {
     const val androidLibrary = "com.android.library"
     const val kotlinAndroidJB = "org.jetbrains.kotlin.android"
     const val daggerHilt = "com.google.dagger.hilt.android"
-}
+    const val pluginSafeArgs = "androidx.navigation.safeargs.kotlin"
+    const val navigationSafeArgsGradlePlugin = "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.navVersion}"
+
+ }
 
 object Libraries {
     private object Versions {
+        const val swipeRefresh = "1.1.0"
         const val gson = "2.9.1"
         const val hilt = BuildPlugins.Versions.hilt
         const val appCompat = "1.5.1"
@@ -128,6 +133,8 @@ object Libraries {
     const val sdp = "com.intuit.ssp:ssp-android:${Versions.spDimen}"
     const val ssp = "com.intuit.sdp:sdp-android:${Versions.spDimen}"
 
+    const val swipeRefresh =
+        "androidx.swiperefreshlayout:swiperefreshlayout:${Versions.swipeRefresh}"
 
 }
 

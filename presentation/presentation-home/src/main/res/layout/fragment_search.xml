@@ -5,15 +5,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tbSearch"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="@color/purple_300"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="@string/app_name"
+        app:titleTextColor="@color/white" />
+
 
     <EditText
         android:id="@+id/etSearch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Search Movies"
+        android:layout_margin="@dimen/_8sdp"
+        android:hint="@string/search_hint"
+        android:imeOptions="actionSearch"
+        android:inputType="text"
+        android:lines="1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/tbSearch"
+        tools:ignore="Autofill" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvMovies"
@@ -24,12 +38,14 @@
 
     <ProgressBar
         android:id="@+id/pbSearchMovies"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etSearch" />
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_25sdp"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/etSearch"
+        app:layout_constraintEnd_toEndOf="@+id/etSearch"
+        app:layout_constraintTop_toBottomOf="@+id/etSearch"
+        app:layout_constraintTop_toTopOf="@+id/etSearch" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

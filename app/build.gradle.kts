@@ -47,8 +47,6 @@ dependencies {
     androidTestImplementation(TestLibraries.testExtJunit)
     androidTestImplementation(TestLibraries.espressoCore)
 
-
-
     implementation(Libraries.hilt)
     kapt(Libraries.hiltAndroidCompilerKtx)
 
