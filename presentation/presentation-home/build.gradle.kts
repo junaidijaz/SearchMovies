@@ -8,7 +8,7 @@ plugins {
 }
 
 android {
-    compileSdk =    AndroidSdk.compile
+    compileSdk = AndroidSdk.compile
 
     defaultConfig {
         minSdk = AndroidSdk.min
@@ -68,9 +68,13 @@ dependencies {
     implementation(Libraries.glide)
     implementation(Libraries.swipeRefresh)
 
+    implementation(Libraries.exoPlayer)
+    implementation(Libraries.exoDash)
+    implementation(Libraries.exoHls)
+    implementation(Libraries.exoUi)
 
 
-    implementation(project(path= SubModule.dataMoviesRepository))
-    implementation(project(path= SubModule.dataCommon))
-    implementation(project(path= SubModule.presentationCommon))
+    implementation(project(path = SubModule.dataMoviesRepository))
+    implementation(project(path = SubModule.dataCommon))
+    implementation(project(path = SubModule.presentationCommon))
 }

@@ -12,14 +12,14 @@ import javax.inject.Inject
 class MoviesRepository @Inject constructor(private var remoteConfigurationSource: RemoteMoviesSource) {
 
     val TAG = MoviesRepository::class.java.simpleName
-    fun searchMovies(page: Int, query: String) = remoteConfigurationSource.searchMovies(page, query)
-        .map {
-            Log.d(TAG, "searchMovies: ")
-            Result.Success(it) as Result<SearchedVideos>
-        }.flowOn(Dispatchers.IO)
-        .catch {
-            emit(Result.Error(AppException.createFromThrowable(it)))
-        }
-
-
+    suspend fun searchMovies(page: Int, query: String): Flow<Result<SearchedVideos>> {
+        return remoteConfigurationSource.searchMovies(page, query)
+            .map {
+                Log.d(TAG, "searchMovies: ")
+                Result.Success(it) as Result<SearchedVideos>
+            }.flowOn(Dispatchers.IO)
+            .catch {
+                emit(Result.Error(AppException.createFromThrowable(it)))
+            }
+    }
 }

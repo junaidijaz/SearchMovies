@@ -1,5 +1,6 @@
 package com.simulated.presentation_home.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -40,10 +41,7 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>() {
             binding.tvItemTittle.text = item.title
 
             binding.ivPlay.setOnClickListener {
-                val action =
-                    DetailsFragmentDirections.actionDetailsFragmentToPlayerFragment(item.videoLogoOriginal)
-                findNavController().navigate(action)
-
+                startActivity(Intent(requireActivity(),PlayerActivity::class.java))
             }
 
         } else {

@@ -80,6 +80,7 @@ object Libraries {
         const val okHttp = "4.9.0"
         const val navVersion = "2.5.2"
         const val spDimen = "1.1.0"
+        const val exo = "2.18.0"
 
     }
 
@@ -135,6 +136,11 @@ object Libraries {
 
     const val swipeRefresh =
         "androidx.swiperefreshlayout:swiperefreshlayout:${Versions.swipeRefresh}"
+
+    const val exoPlayer = "com.google.android.exoplayer:exoplayer:${Versions.exo}"
+    const val exoDash ="com.google.android.exoplayer:exoplayer-dash:${Versions.exo}"
+    const val exoHls = "com.google.android.exoplayer:exoplayer-hls:${Versions.exo}"
+    const val exoUi = "com.google.android.exoplayer:exoplayer-ui:${Versions.exo}"
 
 }
 

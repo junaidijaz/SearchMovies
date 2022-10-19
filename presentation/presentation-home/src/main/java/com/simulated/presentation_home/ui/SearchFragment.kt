@@ -10,6 +10,7 @@ import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.TextView.OnEditorActionListener
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -96,6 +97,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
             when (it) {
                 is UiState.Error -> {
                     Log.d(TAG, "onCreate: Error")
+                    Toast.makeText(requireContext(), it.errorMessage, Toast.LENGTH_SHORT).show()
                     binding.pbSearchMovies.hide()
                 }
                 is UiState.Loading -> {
