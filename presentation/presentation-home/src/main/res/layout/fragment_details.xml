@@ -30,6 +30,7 @@
 
 
     <ImageView
+        android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_300sdp"
         android:src="@drawable/overly_details_image"
@@ -61,19 +62,27 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivMovieDetail" />
 
-    <TextView
-        android:id="@+id/tvItemDis"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_height="0dp"
         android:layout_marginTop="@dimen/_15sdp"
-        android:layout_marginEnd="@dimen/_10sdp"
-        android:text=""
-        android:textColor="@color/grey"
-        android:textSize="@dimen/_12ssp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvItemTittle" />
+        app:layout_constraintTop_toBottomOf="@+id/tvItemTittle">
+
+        <TextView
+            android:id="@+id/tvItemDis"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:text=""
+            android:textColor="@color/grey"
+            android:textSize="@dimen/_12ssp" />
+
+    </ScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
